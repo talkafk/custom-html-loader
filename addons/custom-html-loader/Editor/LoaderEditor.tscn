@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6q3dagttfjlu"]
+
+[ext_resource type="Script" path="res://addons/custom-html-loader/Editor/loader_editor.gd" id="1_6gcsx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evumc"]
+bg_color = Color(0.140447, 0.140447, 0.140447, 1)
+
+[node name="LoaderEditor" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_6gcsx")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_evumc")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Background color"
+
+[node name="back_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Loader type"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Line"
+popup/item_1/text = "Round"
+popup/item_1/id = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Loader color"
+
+[node name="loader_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Loader background color"
+
+[node name="loader_back_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Border radius"
+
+[node name="border_radius" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+max_value = 50.0
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "px"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Loader width"
+
+[node name="loader_width" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+max_value = 50.0
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "px"
+
+[connection signal="color_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/back_color" to="." method="_on_back_color_color_changed"]
+[connection signal="color_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/loader_color" to="." method="_on_loader_color_color_changed"]
+[connection signal="color_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/loader_back_color" to="." method="_on_loader_back_color_color_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/border_radius" to="." method="_on_border_radius_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/loader_width" to="." method="_on_loader_width_value_changed"]
