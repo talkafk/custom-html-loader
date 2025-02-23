@@ -42,10 +42,9 @@ text = "Background color"
 [node name="back_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-color = Color(0.141176, 0.12549, 0.12549, 1)
+color = Color(0.129412, 0.12549, 0.141176, 1)
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
@@ -53,12 +52,12 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Loader type"
 
-[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="loader_type" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 selected = 0
 item_count = 2
-popup/item_0/text = "Line"
-popup/item_1/text = "Round"
+popup/item_0/text = "bar"
+popup/item_1/text = "circle"
 popup/item_1/id = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
@@ -72,7 +71,7 @@ text = "Loader color"
 [node name="loader_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-color = Color(0.713726, 0.282353, 0.282353, 1)
+color = Color(0.439216, 0.713726, 0.282353, 1)
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -122,6 +121,7 @@ layout_mode = 2
 text = "px"
 
 [connection signal="color_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/back_color" to="." method="_on_back_color_color_changed"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/loader_type" to="." method="_on_option_button_item_selected"]
 [connection signal="color_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/loader_color" to="." method="_on_loader_color_color_changed"]
 [connection signal="color_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/loader_back_color" to="." method="_on_loader_back_color_color_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/border_radius" to="." method="_on_border_radius_value_changed"]

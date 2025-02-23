@@ -9,7 +9,8 @@ var settings = {
 	"loader_back_color": "",
 	"loader_progress_color": "",
 	"border_radius": 0,
-	"loader_width": 10
+	"loader_width": 10,
+	"progress_type": "circle",
 }
 
 
@@ -65,6 +66,12 @@ func _load_config() -> void:
 		settings[key] = config.get_value("config", key)
 	update_ui()
 	
+@onready var loader_type = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/loader_type
+
+func _on_option_button_item_selected(index):
+	settings.progress_type = loader_type.get_item_text(index)
+
+
 func update_ui():
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/back_color.color = Color.html(settings.back_color)
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/loader_color.color = Color.html(settings.loader_progress_color)

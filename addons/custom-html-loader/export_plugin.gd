@@ -6,8 +6,7 @@ var plugin_path: String = get_script().resource_path.get_base_dir()
 var export_path := ""
 var _features: Array
 
-var settings:Dictionary
-
+var settings: Dictionary
 
 func _get_name():
 	return "LoaderEditor"
@@ -35,7 +34,9 @@ func _export_end() -> void:
 ".format({"back_color": settings.back_color})
 		html = replace_bloc(r"\n#status {(\s.*?)*}", status_text, html)
 		
-		var status_progress_text = "/* Общий стиль прогресс-бара */
+		match settings.progress_type:
+			"bar":
+				var status_progress_text = "/* Общий стиль прогресс-бара */
 \n#status-progress {
 	bottom: 10%;
 	width: 50%;
@@ -66,8 +67,35 @@ func _export_end() -> void:
 			"border_radius": settings.border_radius,
 			"loader_width": settings.loader_width,
 			})
-		html = replace_bloc(r"\n#status-progress {(\s.*?)*}", status_progress_text, html)
+				html = replace_bloc(r"\n#status-progress {(\s.*?)*}", status_progress_text, html)
+			"circle":
+				var status_progress_text = "/* Общий стиль прогресс-круга */
+#status-progress {
+	display: block;
+	width: 50px;
+	height: 50px;
+	border: {loader_width}px solid #{loader_back_color};
+	border-top: {loader_width}px solid #{loader_progress_color};
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	bottom: 10%;
+	margin: 0 auto;
+}
 
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+".format({"loader_back_color": settings.loader_back_color,
+			"loader_progress_color": settings.loader_progress_color,
+			"border_radius": settings.border_radius,
+			"loader_width": settings.loader_width,
+			})
+				html = replace_bloc(r"\n#status-progress {(\s.*?)*}", status_progress_text, html)
+				
+				html = replace_bloc(r'<progress id="status-progress"></progress>', '<div id="status-progress"></div>', html)
+				
 		file = FileAccess.open(export_path, FileAccess.WRITE)
 		file.store_string(html)
 		file.close()
