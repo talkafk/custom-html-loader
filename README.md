@@ -2,7 +2,7 @@
 ![Godot 4.x](https://img.shields.io/badge/Godot-4.x-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-This repository contains a custom HTML loader plugin for Godot Engine. The plugin allows you to customize the HTML export template for web builds, including styles for a status and progress bar.
+This repository contains a custom HTML loader plugin for Godot Engine. The plugin allows you to customize the HTML export template for web builds.
 
 >[!WARNING]  
 >This plugin may not work correctly with custom HTML templates.
