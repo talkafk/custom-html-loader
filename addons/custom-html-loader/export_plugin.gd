@@ -8,6 +8,11 @@ var _features: Array
 
 var settings:Dictionary
 
+
+func _get_name():
+	return "LoaderEditor"
+
+
 func _export_begin(features: PackedStringArray , is_debug: bool, path: String, flags: int) -> void:
 	export_path = path
 	_features = features
@@ -74,7 +79,6 @@ func replace_bloc(reg:String, new_text:String ,text:String) -> String:
 	var result_reg = regex.search(text)
 	var pos_start = result_reg.get_start()
 	var pos_end = result_reg.get_end()
-	print(pos_start, "  ", pos_end)
 	text = text.erase(pos_start, pos_end - pos_start)
 	return text.insert(pos_start, new_text)
 

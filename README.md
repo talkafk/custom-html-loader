@@ -2,6 +2,8 @@
 ![Godot 4.x](https://img.shields.io/badge/Godot-4.x-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![alt text](icon124.png)
+
 This repository contains a custom HTML loader plugin for Godot Engine. The plugin allows you to customize the HTML export template for web builds.
 
 >[!WARNING]  

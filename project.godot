@@ -13,8 +13,10 @@ config_version=5
 config/name="custom-html-loader"
 run/main_scene="res://Demo.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/show_image=false
-config/icon="res://icon.svg"
+boot_splash/image="res://icon512.png"
+boot_splash/fullsize=false
+config/icon="res://icon.png"
+boot_splash/minimum_display_time=500
 
 [editor_plugins]
 
