@@ -35,18 +35,21 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Background color"
 
 [node name="back_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+color = Color(0.141176, 0.12549, 0.12549, 1)
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Loader type"
 
@@ -62,34 +65,40 @@ popup/item_1/id = 1
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Loader color"
 
 [node name="loader_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+color = Color(0.713726, 0.282353, 0.282353, 1)
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Loader background color"
 
 [node name="loader_back_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+color = Color(0.486275, 0.537255, 0.462745, 1)
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Border radius"
 
 [node name="border_radius" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
 max_value = 50.0
+value = 8.0
 
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
@@ -99,12 +108,14 @@ text = "px"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Loader width"
 
 [node name="loader_width" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
 max_value = 50.0
+value = 15.0
 
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
