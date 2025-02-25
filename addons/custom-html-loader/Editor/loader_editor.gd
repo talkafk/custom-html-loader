@@ -71,11 +71,7 @@ func _load_config() -> void:
 
 func _on_option_button_item_selected(index):
 	settings.progress_type = loader_type.get_item_text(index)
-	match settings.progress_type:
-		"circle":
-			border_radius.editable = false
-		"bar":
-			border_radius.editable = true
+	_update_progress_type_ui()
 	updated.emit()
 	_save_config()
 
@@ -87,11 +83,14 @@ func update_ui():
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/loader_back_color.color = Color.html(settings.loader_back_color)
 	border_radius.value = settings.border_radius
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/loader_width.value = settings.loader_width
-	
+	_update_progress_type_ui()
+			
+			
+func _update_progress_type_ui():
 	match settings.progress_type:
 		"circle":
-			border_radius.editable = false
+			$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5.hide()
 			loader_type.select(1)
 		"bar":
-			border_radius.editable = true
+			$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5.show()
 			loader_type.select(0)
