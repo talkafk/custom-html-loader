@@ -1,7 +1,7 @@
 @tool
 extends EditorPlugin
 
-var export_plugin: HTMLExportPlugin
+var export_plugin: EditorExportPlugin
 
 const LoaderEditor = preload("res://addons/custom-html-loader/Editor/LoaderEditor.tscn")
 var loader_editor

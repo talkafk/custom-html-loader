@@ -67,14 +67,30 @@ func _load_config() -> void:
 	update_ui()
 	
 @onready var loader_type = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/loader_type
+@onready var border_radius = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/border_radius
 
 func _on_option_button_item_selected(index):
 	settings.progress_type = loader_type.get_item_text(index)
+	_update_progress_type_ui()
+	updated.emit()
+	_save_config()
+
 
 
 func update_ui():
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/back_color.color = Color.html(settings.back_color)
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/loader_color.color = Color.html(settings.loader_progress_color)
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/loader_back_color.color = Color.html(settings.loader_back_color)
-	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/border_radius.value = settings.border_radius
+	border_radius.value = settings.border_radius
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/loader_width.value = settings.loader_width
+	_update_progress_type_ui()
+			
+			
+func _update_progress_type_ui():
+	match settings.progress_type:
+		"circle":
+			$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5.hide()
+			loader_type.select(1)
+		"bar":
+			$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5.show()
+			loader_type.select(0)
