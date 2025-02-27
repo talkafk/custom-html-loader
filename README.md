@@ -16,6 +16,7 @@ This repository contains a custom HTML loader plugin for Godot Engine. The plugi
 
 - Customize the background color.
 - Customize the styles of the progress bar, including width, border radius, and colors.
+- Customize the loader type (bar or circle).
 
 ## Installation
 
@@ -32,17 +33,21 @@ This repository contains a custom HTML loader plugin for Godot Engine. The plugi
 
 The plugin settings can be updated in the Godot Editor. The following settings are available:
 
-- `back_color`: Background color for the status element.
-- `loader_back_color`: Background color for the progress bar.
-- `loader_progress_color`: Color of the filled part of the progress bar.
+- `is_back_color`: If true, uses the background color from the project settings. If false, you can set your own background color.
+- `back_color`: Background color.
+- `progress_type`: Type of the loader (bar or circle).
+- `loader_back_color`: Background color for the loader (bar or circle).
+- `loader_progress_color`: Color of the filled part of the loader (bar or circle).
 - `border_radius`: Border radius for the progress bar.
-- `loader_width`: Width of the progress bar.
+- `loader_width`: Width of the progress bar or circle.
+
 
 ## Screenshots
 ### Editor
 ![Editor](editor.png)
 ### Result
 ![Result](result.png)
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.

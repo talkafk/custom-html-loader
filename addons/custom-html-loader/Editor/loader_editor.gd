@@ -5,6 +5,7 @@ signal updated()
 
 
 var settings = {
+	"is_back_color": false,
 	"back_color": "",
 	"loader_back_color": "",
 	"loader_progress_color": "",
@@ -25,26 +26,26 @@ func _on_back_color_color_changed(color:Color) -> void:
 	_save_config()
 
 
-func _on_loader_color_color_changed(color):
+func _on_loader_color_color_changed(color) -> void:
 	settings.loader_progress_color = color.to_html()
 	updated.emit()
 	_save_config()
 
 
-func _on_loader_back_color_color_changed(color):
+func _on_loader_back_color_color_changed(color) -> void:
 	settings.loader_back_color = color.to_html()
 	updated.emit()
 	_save_config()
 
 
-func _on_border_radius_value_changed(value):
+func _on_border_radius_value_changed(value) -> void:
 	settings.border_radius = value
 	updated.emit()
 	_save_config()
 
 
 
-func _on_loader_width_value_changed(value):
+func _on_loader_width_value_changed(value) -> void:
 	settings.loader_width = value
 	updated.emit()
 	_save_config()
@@ -69,24 +70,25 @@ func _load_config() -> void:
 @onready var loader_type = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/loader_type
 @onready var border_radius = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/border_radius
 
-func _on_option_button_item_selected(index):
+
+func _on_option_button_item_selected(index) -> void:
 	settings.progress_type = loader_type.get_item_text(index)
 	_update_progress_type_ui()
 	updated.emit()
 	_save_config()
 
 
-
-func update_ui():
+func update_ui() -> void:
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/back_color.color = Color.html(settings.back_color)
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/loader_color.color = Color.html(settings.loader_progress_color)
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/loader_back_color.color = Color.html(settings.loader_back_color)
 	border_radius.value = settings.border_radius
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/loader_width.value = settings.loader_width
 	_update_progress_type_ui()
-			
-			
-func _update_progress_type_ui():
+	_update_is_back_ui()
+
+
+func _update_progress_type_ui() -> void:
 	match settings.progress_type:
 		"circle":
 			$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5.hide()
@@ -94,3 +96,18 @@ func _update_progress_type_ui():
 		"bar":
 			$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5.show()
 			loader_type.select(0)
+
+
+func _on_is_back_from_ps_toggled(toggled_on: bool) -> void:
+	settings.is_back_color = toggled_on
+	_update_is_back_ui()
+	updated.emit()
+	_save_config()
+	
+	
+func _update_is_back_ui() -> void:
+	if settings.is_back_color:
+		$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer.hide()
+	else:
+		$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer.show()
+		
