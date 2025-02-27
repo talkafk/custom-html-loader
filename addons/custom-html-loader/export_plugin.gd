@@ -26,7 +26,7 @@ func _export_end() -> void:
 		if settings.is_back_color:
 			back_color = ProjectSettings.get_setting("application/boot_splash/bg_color").to_html()
 		else:
-			back_color = settings.settings.back_color
+			back_color = settings.back_color
 		
 		var status_text = "\n#status {
 	background-color: #{back_color};
