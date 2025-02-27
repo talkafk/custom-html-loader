@@ -84,6 +84,7 @@ func update_ui() -> void:
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/loader_back_color.color = Color.html(settings.loader_back_color)
 	border_radius.value = settings.border_radius
 	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/loader_width.value = settings.loader_width
+	$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7/IsBackFromPS.button_pressed = settings.is_back_color
 	_update_progress_type_ui()
 	_update_is_back_ui()
 
