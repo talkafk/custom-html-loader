@@ -22,6 +22,11 @@ func _export_end() -> void:
 		var file := FileAccess.open(export_path, FileAccess.READ)
 		var html := file.get_as_text()
 		file.close()
+		var back_color:String
+		if settings.is_back_color:
+			back_color = ProjectSettings.get_setting("application/boot_splash/bg_color").to_html()
+		else:
+			back_color = settings.back_color
 		
 		var status_text = "\n#status {
 	background-color: #{back_color};
@@ -31,7 +36,7 @@ func _export_end() -> void:
 	align-items: center;
 	visibility: hidden;
 }
-".format({"back_color": settings.back_color})
+".format({"back_color": back_color})
 		html = replace_bloc(r"\n#status {(\s.*?)*}", status_text, html)
 		
 		match settings.progress_type:
