@@ -37,8 +37,10 @@ text = "Use background color from project settings"
 
 [node name="IsBackFromPS" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
 layout_mode = 2
+button_pressed = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -49,7 +51,7 @@ text = "Background color"
 [node name="back_color" type="ColorPickerButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-color = Color(0.164706, 0.180392, 0.196078, 1)
+color = Color(0.0235294, 0.145098, 0.266667, 1)
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -127,6 +129,17 @@ value = 14.0
 layout_mode = 2
 text = "px"
 
+[node name="HBoxContainer8" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Add box-shadow"
+
+[node name="IsBoxShadow" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Apply"
@@ -138,3 +151,4 @@ text = "Apply"
 [connection signal="color_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/loader_back_color" to="." method="_on_loader_back_color_color_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/border_radius" to="." method="_on_border_radius_value_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/loader_width" to="." method="_on_loader_width_value_changed"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer8/IsBoxShadow" to="." method="_on_is_box_shadow_toggled"]
