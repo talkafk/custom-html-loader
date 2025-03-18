@@ -40,6 +40,7 @@ The plugin settings can be updated in the Godot Editor. The following settings a
 - `loader_progress_color`: Color of the filled part of the loader (bar or circle).
 - `border_radius`: Border radius for the progress bar.
 - `loader_width`: Width of the progress bar or circle.
+- `is_box_shadow`: If true, applies a box shadow to the loader. 
 
 
 ## Screenshots

@@ -12,6 +12,7 @@ var settings = {
 	"border_radius": 0,
 	"loader_width": 10,
 	"progress_type": "circle",
+	"is_box_shadow": false,
 }
 
 
@@ -112,3 +113,8 @@ func _update_is_back_ui() -> void:
 	else:
 		$PanelContainer/MarginContainer/VBoxContainer/HBoxContainer.show()
 		
+
+func _on_is_box_shadow_toggled(toggled_on: bool) -> void:
+	settings.is_box_shadow = toggled_on
+	updated.emit()
+	_save_config()

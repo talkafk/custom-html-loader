@@ -41,64 +41,11 @@ func _export_end() -> void:
 		
 		match settings.progress_type:
 			"bar":
-				var status_progress_text = "/* Общий стиль прогресс-бара */
-\n#status-progress {
-	bottom: 10%;
-	width: 50%;
-	height: {loader_width}px;
-	margin: 0 auto;
-	border-radius: {border_radius}px;
-	overflow: hidden;
-}
-
-/* Цвет фона прогресс-бара (для Chrome, Safari) */
-#status-progress::-webkit-progress-bar {
-	background-color: #{loader_back_color}; /* цвет фона */
-	border-radius: {border_radius}px;
-}
-
-/* Цвет заполненной части прогресс-бара (для Chrome, Safari) */
-#status-progress::-webkit-progress-value {
-	background-color: #{loader_progress_color}; /* цвет прогресса */
-	border-radius: {border_radius}px;
-}
-
-/* Цвет заполненной части прогресс-бара (для Firefox) */
-#status-progress::-moz-progress-bar {
-	background-color: #{loader_progress_color}; /* цвет прогресса */
-	border-radius: {border_radius}px;
-}".format({"loader_back_color": settings.loader_back_color,
-			"loader_progress_color": settings.loader_progress_color,
-			"border_radius": settings.border_radius,
-			"loader_width": settings.loader_width,
-			})
+				var status_progress_text = create_bar_css(settings.is_box_shadow)
 				html = replace_bloc(r"\n#status-progress {(\s.*?)*}", status_progress_text, html)
 			"circle":
-				var status_progress_text = "/* Общий стиль прогресс-круга */
-#status-progress {
-	display: block;
-	width: 50px;
-	height: 50px;
-	border: {loader_width}px solid #{loader_back_color};
-	border-top: {loader_width}px solid #{loader_progress_color};
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-	bottom: 10%;
-	margin: 0 auto;
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
-}
-
-".format({"loader_back_color": settings.loader_back_color,
-			"loader_progress_color": settings.loader_progress_color,
-			"border_radius": settings.border_radius,
-			"loader_width": settings.loader_width,
-			})
+				var status_progress_text = create_circle_css(settings.is_box_shadow)
 				html = replace_bloc(r"\n#status-progress {(\s.*?)*}", status_progress_text, html)
-				
 				html = replace_bloc(r'<progress id="status-progress"></progress>', '<div id="status-progress"></div>', html)
 				
 		file = FileAccess.open(export_path, FileAccess.WRITE)
@@ -119,3 +66,76 @@ func replace_bloc(reg:String, new_text:String ,text:String) -> String:
 func on_editor_settings_updated(_settings:Dictionary):
 	settings = _settings
 	
+
+func create_bar_css(is_shadow:bool) -> String:
+	var status_progress_text = "
+/* Общий стиль прогресс-бара */
+\n#status-progress {
+	bottom: 10%;
+	width: 50%;
+	height: {loader_width}px;
+	margin: 0 auto;
+	border-radius: {border_radius}px;
+	overflow: hidden;
+	/* box-shadow */
+}
+
+/* Цвет фона прогресс-бара (для Chrome, Safari) */
+#status-progress::-webkit-progress-bar {
+	background-color: #{loader_back_color}; /* цвет фона */
+	border-radius: {border_radius}px;
+	/* box-shadow */
+}
+/* Цвет заполненной части прогресс-бара (для Chrome, Safari) */
+#status-progress::-webkit-progress-value {
+	background-color: #{loader_progress_color}; /* цвет прогресса */
+	border-radius: {border_radius}px;
+	/* box-shadow */
+}
+/* Цвет заполненной части прогресс-бара (для Firefox) */
+	#status-progress::-moz-progress-bar {
+	background-color: #{loader_progress_color}; /* цвет прогресса */
+	border-radius: {border_radius}px;
+	/* box-shadow */
+}
+".format({"loader_back_color": settings.loader_back_color,
+			"loader_progress_color": settings.loader_progress_color,
+			"border_radius": settings.border_radius,
+			"loader_width": settings.loader_width,
+			})
+	if is_shadow:
+		status_progress_text = replace_bloc(r"\/\* box-shadow \*\/", "box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;", status_progress_text)
+		status_progress_text = replace_bloc(r"\/\* box-shadow \*\/", "box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;", status_progress_text)
+		status_progress_text = replace_bloc(r"\/\* box-shadow \*\/", "box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;", status_progress_text)
+		status_progress_text = replace_bloc(r"\/\* box-shadow \*\/", "box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;", status_progress_text)
+	return status_progress_text
+
+
+func create_circle_css(is_shadow:bool) -> String:
+	var status_progress_text = "
+/* Общий стиль прогресс-круга */
+#status-progress {
+	display: block;
+	width: 50px;
+	height: 50px;
+	border: {loader_width}px solid #{loader_back_color};
+	border-top: {loader_width}px solid #{loader_progress_color};
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	bottom: 10%;
+	margin: 0 auto;
+	/* box-shadow */
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+".format({"loader_back_color": settings.loader_back_color,
+			"loader_progress_color": settings.loader_progress_color,
+			"border_radius": settings.border_radius,
+			"loader_width": settings.loader_width,
+			})
+	if is_shadow:
+		status_progress_text = replace_bloc(r"\/\* box-shadow \*\/", "box-shadow: inset 0px 0px 3px 3px #444, 0px 0px 3px 3px #444;", status_progress_text)
+	return status_progress_text
