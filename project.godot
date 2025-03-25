@@ -14,8 +14,7 @@ config/name="custom-html-loader"
 config/tags=PackedStringArray("tools")
 run/main_scene="res://Demo.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/image="res://icon512.png"
-boot_splash/fullsize=false
+boot_splash/bg_color=Color(0.0752474, 0.127571, 0.0636682, 1)
 config/icon="res://icon.png"
 boot_splash/minimum_display_time=500
 
