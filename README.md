@@ -10,7 +10,7 @@ This repository contains a custom HTML loader plugin for Godot Engine. The plugi
 >This plugin may not work correctly with custom HTML templates.
 
 >[!NOTE]  
->This plugin has been tested on Godot version 4.3.
+>This plugin has been tested on Godot versions 4.3, 4.4.
 
 ## Features
 
@@ -47,7 +47,7 @@ The plugin settings can be updated in the Godot Editor. The following settings a
 ### Editor
 ![Editor](editor.png)
 ### Result
-![Result](result.png)
+![alt text](loader_bar.gif) ![alt text](loader_circle.gif)
 
 ## Contributing
 
